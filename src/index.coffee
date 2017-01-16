@@ -1,16 +1,16 @@
 raspi  = require 'raspi-io'
 five   = require 'johnny-five'
 SX127x = require('sx127x')
-
-board = new five.Board({
-  io: new raspi()
-})
-
 sx127x = new SX127x({
     frequency: 915e6
     resetPin: 24
     dio0Pin: 25
   })
+
+
+board = new five.Board({
+  io: new raspi()
+})
 
 count = 0
 gpsData   = ""
