@@ -9,7 +9,7 @@ count = 0
 
 sx127x.open (err) ->
   console.log 'open', if err then err else 'success'
-  throw err if err?
+  # throw err if err?
 
   setInterval (->
     console.log 'write: hello ' + count
