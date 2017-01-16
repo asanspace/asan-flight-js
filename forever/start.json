@@ -1,0 +1,7 @@
+{
+    "uid": "asan-flight",
+    "append": true,
+    "watch": true,
+    "script": "index.js",
+    "sourceDir": "/home/pi/asan/asan-flight-js"
+}

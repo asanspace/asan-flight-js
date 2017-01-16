@@ -17,13 +17,13 @@ gpsData   = ""
 
 board.on 'ready', () ->
   gps = new five.GPS({
-    pins: {rx: 'P1-8', tx: 'P1-10'}
+    pins: {tx: 'P1-8', rx: 'P1-10'}
   })
 
-  gps.on 'change', () ->
-    console.log 'lat: ', @.latitude
-    console.log 'lon: ', @.longitude
-    gpsData = "lat:#{@.latitude}//lon:#{@.longitude}"
+  gps.on 'data', (data) ->
+    { latitude, longitude, altitude, speed, time } = data
+    console.log { data }
+    gpsData = "lat:#{latitude},lon:#{longitude},a:#{altitude},s:#{speed},t:#{time}"
 
 sx127x.open (err) ->
   console.log 'open', if err then err else 'success'
