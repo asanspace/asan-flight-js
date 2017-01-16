@@ -17,7 +17,7 @@ gpsData   = ""
 
 board.on 'ready', () ->
   gps = new five.GPS({
-    pins: {tx: 'P1-8', rx: 'P1-10'}
+    pins: ['P1-8', 'P1-10']
   })
 
   gps.on 'data', (data) ->
