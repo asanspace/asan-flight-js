@@ -37,5 +37,5 @@ Parts:
 1. Add this line
 
 ```
-@reboot /usr/bin/sudo -u pi -H /usr/local/bin/forever start /home/pi/asan/asan-flight-js/forever/start.json
+@reboot /usr/bin/sudo -H /usr/local/bin/forever start /home/pi/asan/asan-flight-js/forever/start.json
 ```
