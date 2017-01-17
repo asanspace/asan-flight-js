@@ -29,3 +29,13 @@ Parts:
 | GND | GND      | 6         |
 | RX  | TX       | 8         |
 | TX  | RX       | 10        |
+
+### Setting up Forever script
+
+1. npm i -g forever
+1. crontab -u pi -e
+1. Add this line
+
+```
+@reboot /usr/bin/sudo -u pi -H /usr/local/bin/forever start /home/pi/asan/asan-flight-js/forever/start.json
+```
