@@ -20,7 +20,7 @@ board.on 'ready', () ->
 
   gps.on 'data', (data) ->
     { latitude, longitude, altitude, speed, time } = data
-    time = time.split('.')[0]
+    time = parseFloat time
     gpsData = "[#{latitude},#{longitude},#{altitude},#{speed},#{time}]"
 
 sx127x.open (err) ->
