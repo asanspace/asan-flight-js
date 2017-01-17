@@ -20,7 +20,7 @@ board.on 'ready', () ->
 
   gps.on 'data', (data) ->
     { latitude, longitude, altitude, speed, time } = data
-    gpsData = "lat:#{latitude},lon:#{longitude},a:#{altitude},s:#{speed},t:#{time}\n\r"
+    gpsData = "lat:#{latitude},lon:#{longitude},a:#{altitude},s:#{speed},t:#{time}\r\n"
 
 sx127x.open (err) ->
   console.log 'open', if err then err else 'success'
