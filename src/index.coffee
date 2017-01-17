@@ -32,7 +32,7 @@ sx127x.open (err) ->
       console.log '\u0009', if err then err else 'success'
       return
     return
-  ), 5000
+  ), 3000
 
 process.on 'SIGINT', ->
   sx127x.close (err) ->
