@@ -1,5 +1,6 @@
-raspi  = require 'raspi-io'
-five   = require 'johnny-five'
+
+GPS    = require './gps'
+gps    = new GPS
 SX127x = require('sx127x')
 sx127x = new SX127x({
     frequency: 915e6
@@ -7,21 +8,10 @@ sx127x = new SX127x({
     dio0Pin: 25
   })
 
-board = new five.Board({
-  io: new raspi({ includePins: ['P1-8', 'P1-10']})
-})
+gpsData = ''
 
-gpsData  = ""
-
-board.on 'ready', () ->
-  gps = new five.GPS({
-    pins: ['P1-8', 'P1-10']
-  })
-
-  gps.on 'data', (data) ->
-    { latitude, longitude, altitude, speed, time } = data
-    time = parseFloat time
-    gpsData = "[#{latitude},#{longitude},#{altitude},#{speed},#{time}]"
+gps.onData (data) ->
+  gpsData = data
 
 sx127x.open (err) ->
   console.log 'open', if err then err else 'success'
