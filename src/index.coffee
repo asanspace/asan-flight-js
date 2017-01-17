@@ -7,24 +7,24 @@ sx127x = new SX127x({
     dio0Pin: 25
   })
 
+board = new five.Board({
+  io: new raspi({ excludePins: [5, 6, 10, 12, 13, 14]})
+})
+
 gpsData   = ""
+
+board.on 'ready', () ->
+  gps = new five.GPS({
+    pins: ['P1-8', 'P1-10']
+  })
+
+  gps.on 'data', (data) ->
+    { latitude, longitude, altitude, speed, time } = data
+    gpsData = "lat:#{latitude},lon:#{longitude},a:#{altitude},s:#{speed},t:#{time}"
 
 sx127x.open (err) ->
   console.log 'open', if err then err else 'success'
   throw err if err?
-
-  board = new five.Board({
-    io: new raspi()
-  })
-  
-  board.on 'ready', () ->
-    gps = new five.GPS({
-      pins: ['P1-8', 'P1-10']
-    })
-
-    gps.on 'data', (data) ->
-      { latitude, longitude, altitude, speed, time } = data
-      gpsData = "lat:#{latitude},lon:#{longitude},a:#{altitude},s:#{speed},t:#{time}"
 
   setInterval (->
     console.log { gpsData }
