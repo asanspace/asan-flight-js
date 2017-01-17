@@ -6,6 +6,10 @@ Parts:
 1. Adafruit LoRa RFM9x (we use a 900mhz model)
 1. GPS Module (we used a UBLOX NEO-6M)
 
+## Enable SPI
+
+Use raspi-config to enable SPI
+
 ## Wiring
 
 ### LoRa
