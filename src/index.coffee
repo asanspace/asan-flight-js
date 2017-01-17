@@ -8,7 +8,7 @@ sx127x = new SX127x({
   })
 
 board = new five.Board({
-  io: new raspi({ excludePins: [5, 6, 10, 12, 13, 14]})
+  io: new raspi({ includePins: ['P1-8', 'P1-10']})
 })
 
 gpsData   = ""
