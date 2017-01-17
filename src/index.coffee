@@ -11,7 +11,7 @@ board = new five.Board({
   io: new raspi({ includePins: ['P1-8', 'P1-10']})
 })
 
-gpsData   = ""
+gpsData  = ""
 
 board.on 'ready', () ->
   gps = new five.GPS({
@@ -20,7 +20,7 @@ board.on 'ready', () ->
 
   gps.on 'data', (data) ->
     { latitude, longitude, altitude, speed, time } = data
-    gpsData = "lat:#{latitude},lon:#{longitude},a:#{altitude},s:#{speed},t:#{time}"
+    gpsData = "lat:#{latitude},lon:#{longitude},a:#{altitude},s:#{speed},t:#{time}\n\r"
 
 sx127x.open (err) ->
   console.log 'open', if err then err else 'success'
