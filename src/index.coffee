@@ -3,7 +3,7 @@ GPS    = require './gps'
 gps    = new GPS
 fs     = require 'fs'
 Log    = require 'log'
-log    = new Log 'info', fs.createWriteStream('my.log')
+log    = new Log 'debug', fs.createWriteStream('my.log')
 SX127x = require('sx127x')
 sx127x = new SX127x({
     frequency: 915e6
