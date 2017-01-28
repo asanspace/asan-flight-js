@@ -27,7 +27,7 @@ sx127x.open (err) ->
 
   setInterval (->
     console.log { gpsData }
-    logger.info("gpsData: " + data)
+    logger.info("gpsData: " + gpsData)
     sx127x.write new Buffer(gpsData), (err) ->
       console.log '\u0009', if err then err else 'success'
       return
