@@ -1,6 +1,9 @@
 
 GPS    = require './gps'
 gps    = new GPS
+fs     = require 'fs'
+Log    = require 'log'
+log    = new Log 'info', fs.createWriteStream('my.log')
 SX127x = require('sx127x')
 sx127x = new SX127x({
     frequency: 915e6
@@ -12,6 +15,7 @@ gpsData = ''
 
 gps.onData (data) ->
   gpsData = data
+  log.info data
 
 sx127x.open (err) ->
   console.log 'open', if err then err else 'success'

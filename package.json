@@ -19,9 +19,10 @@
   "homepage": "https://github.com/asanspace/asan-flight-js#readme",
   "dependencies": {
     "coffee-script": "^1.12.2",
-    "lodash": "^4.17.4",
-    "sx127x": "*",
     "johnny-five": "^0.10.6",
-    "raspi-io": "^7.2.2"
+    "lodash": "^4.17.4",
+    "log": "^1.4.0",
+    "raspi-io": "^7.2.2",
+    "sx127x": "*"
   }
 }
