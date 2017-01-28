@@ -2,8 +2,12 @@
 GPS    = require './gps'
 gps    = new GPS
 fs     = require 'fs'
-Log    = require 'log'
-log    = new Log 'debug', fs.createWriteStream('my.log')
+log4js = require 'log4js'
+filename = 'logs/' + Date.now() + '.log'
+log4js.loadAppender('file')
+log4js.addAppender log4js.appenders.file(filename), 'gpsData'
+logger = log4js.getLogger 'gpsData'
+
 SX127x = require('sx127x')
 sx127x = new SX127x({
     frequency: 915e6
@@ -15,7 +19,7 @@ gpsData = ''
 
 gps.onData (data) ->
   gpsData = data
-  log.info("gpsData: " + data)
+  logger.info("gpsData: " + data)
 
 sx127x.open (err) ->
   console.log 'open', if err then err else 'success'
@@ -23,7 +27,7 @@ sx127x.open (err) ->
 
   setInterval (->
     console.log { gpsData }
-    log.info("gpsData: " + data)
+    logger.info("gpsData: " + data)
     sx127x.write new Buffer(gpsData), (err) ->
       console.log '\u0009', if err then err else 'success'
       return
