@@ -3,9 +3,8 @@ GPS    = require './gps'
 gps    = new GPS
 fs     = require 'fs'
 log4js = require 'log4js'
-filename = 'logs/' + Date.now() + '.log'
 log4js.loadAppender('file')
-log4js.addAppender log4js.appenders.file(filename), 'gpsData'
+log4js.addAppender log4js.appenders.file('logs/telemetry.log'), 'gpsData'
 logger = log4js.getLogger 'gpsData'
 
 SX127x = require('sx127x')
