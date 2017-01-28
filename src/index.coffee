@@ -15,7 +15,7 @@ gpsData = ''
 
 gps.onData (data) ->
   gpsData = data
-  log.info data
+  log.info("gpsData: " + data)
 
 sx127x.open (err) ->
   console.log 'open', if err then err else 'success'
